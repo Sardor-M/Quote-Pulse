@@ -8,6 +8,12 @@ import {
   FooterContainer,
   FooterLink,
   GradientBackgroundCon,
+  QuoteGeneratorButton,
+  QuoteGeneratorContainer,
+  QuoteGeneratorInnerContainer,
+  QuoteGeneratorSubtitle,
+  QuoteGeneratorText,
+  QuoteGeneratorTitle,
 } from "@/components/QuoteGenerator/QuoteGeneratorElem";
 
 // Assets
@@ -27,10 +33,40 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* Background */}
       <GradientBackgroundCon>
+        {/* Quote Generator Modal Popup */}
+
+        {/* Quote Generator */}
+        <QuoteGeneratorContainer />
+        <QuoteGeneratorInnerContainer>
+          <QuoteGeneratorTitle>Quote-Pulse</QuoteGeneratorTitle>
+          <QuoteGeneratorSubtitle>
+            Are you looking for a quote? <br />
+            Generate a random quote provided by the
+            <FooterLink
+              href="https://zenquotes.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ZenQuotes API
+            </FooterLink>
+          </QuoteGeneratorSubtitle>
+          <QuoteGeneratorButton>
+            <QuoteGeneratorText
+              onClick={() => setNumberOfQuotes(numberOfQuotes + 1)}
+            >
+              Generate a quote
+            </QuoteGeneratorText>
+          </QuoteGeneratorButton>
+        </QuoteGeneratorInnerContainer>
+
+        {/* Background Images */}
         <BackgorundCloudImage1 src={Cloud_1} alt="cloudyImage1" height="300" />
         <BackgorundCloudImage2 src={Cloud_2} alt="cloudyImage2" height="300" />
       </GradientBackgroundCon>
+
+      {/* Footer */}
       <FooterContainer>
         <>
           Quotes generated: {numberOfQuotes}
