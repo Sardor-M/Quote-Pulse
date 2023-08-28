@@ -52,18 +52,17 @@ export const FooterLink = styled(Link)`
 `;
 
 export const QuoteGeneratorContainer = styled.div`
-  height: 100px;
-  width: 300px;
+  min-height: 350px;
+  min-width: 350px;
+  height: 70vh;
+  width: 70vw;
   border: 2px solid darkgrey;
-  border-radius: 20px;
-
-  margin-top: 20px;
-  position: relative;
-  transition: 0.2s all ease-in-out;
-  cursor: pointer;
-  top: 20px;
-  margin: auto;
-  transform-origin: center;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
 
   background: rgba(0, 0, 70, 0.3);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -71,13 +70,6 @@ export const QuoteGeneratorContainer = styled.div`
   -webkit-backdrop-filter: blur(20px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  &:hover {
-    filter: brightness(3);
-    transition: 0.2s all ease-in-out;
-    transform: scale(1.1);
-
-    transform-origin: center;
-  }
 `;
 
 export const QuoteGeneratorInnerContainer = styled.div`
@@ -88,8 +80,8 @@ export const QuoteGeneratorInnerContainer = styled.div`
   width: 100%;
 `;
 export const QuoteGeneratorTitle = styled.div`
-  font-family: "Permanent Marker", cursive;
-  font-size: 50px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 58px;
   text-align: center;
   color: white;
   padding: 0px 20px 0px 20px;
@@ -102,8 +94,8 @@ export const QuoteGeneratorTitle = styled.div`
 
 export const QuoteGeneratorSubtitle = styled.div`
   color: white;
-  font-family: "Caveat", cursive;
-  font-size: 35px;
+  font-family: "Cabin", sans-serif;
+  font-size: 25px;
   position: relative;
   width: 100%;
   text-align: center;
@@ -113,8 +105,8 @@ export const QuoteGeneratorSubtitle = styled.div`
   }
 `;
 export const QuoteGeneratorButton = styled.div`
-  height: 100px;
-  width: 300px;
+  height: 50px;
+  width: 220px;
   border: 2px solid darkgrey;
   border-radius: 20px;
 
@@ -141,10 +133,10 @@ export const QuoteGeneratorButton = styled.div`
   }
 `;
 
-export const QuoteGeneratorText = styled.div`
+export const QuoteGeneratorButtonText = styled.div`
   color: white;
-  font-family: "Caveat", cursive;
-  font-size: 35px;
+  font-family: "Black Ops One", sans-serif;
+  font-size: 18px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

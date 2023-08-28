@@ -9,10 +9,10 @@ import {
   FooterLink,
   GradientBackgroundCon,
   QuoteGeneratorButton,
+  QuoteGeneratorButtonText,
   QuoteGeneratorContainer,
   QuoteGeneratorInnerContainer,
   QuoteGeneratorSubtitle,
-  QuoteGeneratorText,
   QuoteGeneratorTitle,
 } from "@/components/QuoteGenerator/QuoteGeneratorElem";
 
@@ -35,31 +35,30 @@ export default function Home() {
       </Head>
       {/* Background */}
       <GradientBackgroundCon>
-        {/* Quote Generator Modal Popup */}
-
         {/* Quote Generator */}
-        <QuoteGeneratorContainer />
-        <QuoteGeneratorInnerContainer>
-          <QuoteGeneratorTitle>Quote-Pulse</QuoteGeneratorTitle>
-          <QuoteGeneratorSubtitle>
-            Are you looking for a quote? <br />
-            Generate a random quote provided by the
-            <FooterLink
-              href="https://zenquotes.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ZenQuotes API
-            </FooterLink>
-          </QuoteGeneratorSubtitle>
-          <QuoteGeneratorButton>
-            <QuoteGeneratorText
+        <QuoteGeneratorContainer>
+          <QuoteGeneratorInnerContainer>
+            <QuoteGeneratorTitle>Quote-Pulse</QuoteGeneratorTitle>
+            <QuoteGeneratorSubtitle>
+              Are you looking for a quote? <br />
+              Generate a random quote provided by the {""}
+              <FooterLink
+                href="https://zenquotes.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ZenQuotes API
+              </FooterLink>
+            </QuoteGeneratorSubtitle>
+            <QuoteGeneratorButton
               onClick={() => setNumberOfQuotes(numberOfQuotes + 1)}
             >
-              Generate a quote
-            </QuoteGeneratorText>
-          </QuoteGeneratorButton>
-        </QuoteGeneratorInnerContainer>
+              <QuoteGeneratorButtonText>
+                Generate a quote
+              </QuoteGeneratorButtonText>
+            </QuoteGeneratorButton>
+          </QuoteGeneratorInnerContainer>
+        </QuoteGeneratorContainer>
 
         {/* Background Images */}
         <BackgorundCloudImage1 src={Cloud_1} alt="cloudyImage1" height="300" />
