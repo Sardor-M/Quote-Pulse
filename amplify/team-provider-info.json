@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "quotegen89acdde4": {}
+      },
+      "function": {
+        "quotePulseLambda": {}
       }
     }
   }
