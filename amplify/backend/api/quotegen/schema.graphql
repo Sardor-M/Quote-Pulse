@@ -9,27 +9,18 @@ input AMPLIFY {
 # Lambda function
 type Query {
   generateAQuote(input: AWSJSON!): String
-   // @uth(rules: [{ allow: public, provider: iam, operations: [read] }])
+    @auth(rules: [{ allow: public, provider: iam }])
     @function(name: "quoteGenLambda-${env}")
 }
 
 # Public data
-type quoteAppTest {
+type quoteAppTest
   @model
-  // @auth(rules: [{
-  //  allow: public, 
-  //  provider: iam,
-  //  operations: [read]
-  // }])
-  {
-    id: ID!
-    queryName: String!
-      @index (
-        name:"QuotesQueryName"
-        queryField: "quoteQueryName"
-      )
-    quotesGenerated: Int!
-    createdAt: String!
-    updatedAt: String!
-  } 
+  @auth(rules: [{ allow: public, provider: iam, operations: [read] }]) {
+  id: ID!
+  queryName: String!
+    @index(name: "QuotesQueryName", queryField: "quoteQueryName")
+  quotesGenerated: Int!
+  createdAt: String!
+  updatedAt: String!
 }

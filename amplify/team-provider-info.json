@@ -16,7 +16,13 @@
         "quotegen89acdde4": {}
       },
       "function": {
-        "quotePulseLambda": {}
+        "quotePulseLambda": {
+          "deploymentBucketName": "amplify-quotegen-dev-172723-deployment",
+          "s3Key": "amplify-builds/quotePulseLambda-526e4e436e7a77326650-build.zip"
+        }
+      },
+      "api": {
+        "quotegen": {}
       }
     }
   }
