@@ -25,6 +25,7 @@ import { API } from "aws-amplify";
 import { quoteQueryName } from "@/src/graphql/queries";
 import { QuoteQueryNameQuery } from "../src/API";
 import { GraphQLResult } from "@aws-amplify/api-graphql";
+import QuoteGeneratorModal from "@/components/QuoteGenerator";
 
 // interfaces for the DynamoDB table
 interface UpdateQuoteInfoData {
@@ -50,6 +51,9 @@ function isGraphQLResultForQueryName(response: any): response is GraphQLResult<{
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
+  const [openGenerator, setOpenGenerator] = useState(false);
+  const [processingQuote, setProcessingQuote] = useState(false);
+  const [quoteReceived, setQuoteReceived] = useState<String | null>(null);
 
   // a function to fetch our DynomoDB object (generated)
   const updateQuoteInfo = async () => {
@@ -84,6 +88,16 @@ export default function Home() {
     updateQuoteInfo();
   }, []);
 
+  // functions for handling the modal
+  const handleCloseGenerator = () => {
+    setOpenGenerator(false);
+  };
+
+  const handleOpenGenerator = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setOpenGenerator(true);
+  };
+
   return (
     <>
       <Head>
@@ -109,10 +123,8 @@ export default function Home() {
                 ZenQuotes API
               </FooterLink>
             </QuoteGeneratorSubtitle>
-            <QuoteGeneratorButton
-            // onClick={() => setNumberOfQuotes(numberOfQuotes + 1)}
-            >
-              <QuoteGeneratorButtonText>
+            <QuoteGeneratorButton>
+              <QuoteGeneratorButtonText onClick={handleOpenGenerator}>
                 Generate a quote
               </QuoteGeneratorButtonText>
             </QuoteGeneratorButton>
@@ -123,6 +135,14 @@ export default function Home() {
         <BackgorundCloudImage1 src={Cloud_1} alt="cloudyImage1" height="300" />
         <BackgorundCloudImage2 src={Cloud_2} alt="cloudyImage2" height="300" />
       </GradientBackgroundCon>
+      <QuoteGeneratorModal
+        open={openGenerator}
+        close={handleCloseGenerator}
+        processingQuote={processingQuote}
+        setProcessingQuote={setProcessingQuote}
+        quoteReceived={quoteReceived}
+        setQuoteReceived={setQuoteReceived}
+      />
 
       {/* Footer */}
       <FooterContainer>
