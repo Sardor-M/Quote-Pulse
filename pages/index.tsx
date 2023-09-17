@@ -20,10 +20,69 @@ import {
 import Cloud_1 from "assets/cloud-image-here.png";
 import Cloud_2 from "assets/cloud-image-new.png";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { API } from "aws-amplify";
+import { quoteQueryName } from "@/src/graphql/queries";
+import { QuoteQueryNameQuery } from "../src/API";
+import { GraphQLResult } from "@aws-amplify/api-graphql";
+
+// interfaces for the DynamoDB table
+interface UpdateQuoteInfoData {
+  id: string;
+  queryName: string;
+  quotesGenerated: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// type guard for fetch function
+function isGraphQLResultForQueryName(response: any): response is GraphQLResult<{
+  quoteQueryName: {
+    items: [UpdateItemInfoData];
+  };
+}> {
+  return (
+    response.data &&
+    response.data.quoteQueryName &&
+    response.data.quoteQueryName.items
+  );
+}
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
+
+  // a function to fetch our DynomoDB object (generated)
+  const updateQuoteInfo = async () => {
+    try {
+      const response = await API.graphql<UpdateQuoteInfoData>({
+        query: quoteQueryName,
+        authMode: "AWS_IAM",
+        variables: {
+          queryName: "LIVE",
+        },
+      });
+      // console.log(" Response from the query:", response);
+      // setNumberOfQuotes(response.data.quoteQueryName.items[0].quotesGenerated);
+
+      if (!isGraphQLResultForQueryName(response)) {
+        throw new Error(
+          "New Error is thrown as the response is not from API.graphQl."
+        );
+      }
+      if (!response.data) {
+        throw new Error("Response data is undefineds");
+      }
+      const recievedNumOfQuotes =
+        response.data.quoteQueryName.items[0].quotesGenerated;
+      setNumberOfQuotes(recievedNumOfQuotes);
+    } catch (error) {
+      console.log("Getting eror while fetching the quote data:", error);
+    }
+  };
+
+  useEffect(() => {
+    updateQuoteInfo();
+  }, []);
 
   return (
     <>
@@ -51,7 +110,7 @@ export default function Home() {
               </FooterLink>
             </QuoteGeneratorSubtitle>
             <QuoteGeneratorButton
-              onClick={() => setNumberOfQuotes(numberOfQuotes + 1)}
+            // onClick={() => setNumberOfQuotes(numberOfQuotes + 1)}
             >
               <QuoteGeneratorButtonText>
                 Generate a quote
