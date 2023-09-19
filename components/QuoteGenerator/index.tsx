@@ -1,5 +1,13 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
 import React from "react";
+import {
+  ModalCircularProgress,
+  QuoteGeneratorInnerContainer,
+  QuoteGeneratorModalContainer,
+  QuoteGeneratorSubtitle,
+  QuoteGeneratorTitle,
+} from "./QuoteGeneratorElem";
+import ImageBlob from "../Animations/ImageBlob";
 
 interface QuoteGeneratorProps {
   open: boolean;
@@ -24,6 +32,8 @@ const QuoteGeneratorModal = ({
   quoteReceived,
   setQuoteReceived,
 }: QuoteGeneratorProps) => {
+  const wiseQuote = '"The best way to predict the future is to create it."';
+  const wiseQuoteAuthor = "by Me :)";
   return (
     <Modal
       id="QuoteGeneratorModal"
@@ -39,7 +49,33 @@ const QuoteGeneratorModal = ({
     >
       <Fade in={open}>
         <QuoteGeneratorModalContainer sx={style}>
-          <QuoteGeneratorInnerContainer></QuoteGeneratorInnerContainer>
+          <QuoteGeneratorInnerContainer>
+            {/*Process the request of the quote */}
+            {processingQuote === true && quoteReceived === null && (
+              <>
+                <ModalCircularProgress size={"8rem"} />
+                <QuoteGeneratorTitle>Create your quote</QuoteGeneratorTitle>
+                <QuoteGeneratorSubtitle style={{ marginTop: "20px" }}>
+                  {wiseQuote}
+                  <br></br>
+                  <span style={{ fontSize: 26 }}>{wiseQuoteAuthor}</span>
+                </QuoteGeneratorSubtitle>
+              </>
+            )}
+            {/* Quote state received */}
+            {quoteReceived !== null && (
+              <>
+                <QuoteGeneratorTitle>Download your quote</QuoteGeneratorTitle>
+                <QuoteGeneratorSubtitle style={{ marginTop: "20px" }}>
+                  See a preview:
+                </QuoteGeneratorSubtitle>
+                <ImageBlobConatiner>
+                  <ImageBlob />
+                </ImageBlobConatiner>
+                <AnimatedDownloadButton>Download</AnimatedDownloadButton>
+              </>
+            )}
+          </QuoteGeneratorInnerContainer>
         </QuoteGeneratorModalContainer>
       </Fade>
     </Modal>

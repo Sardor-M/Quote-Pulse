@@ -96,6 +96,16 @@ export default function Home() {
   const handleOpenGenerator = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setOpenGenerator(true);
+    setProcessingQuote(true);
+    try {
+      // runs a lambda function
+      setTimeout(() => {
+        setProcessingQuote(false);
+      }, 3000);
+    } catch (error) {
+      console.log("Error generating a quote:", error);
+      setProcessingQuote(false);
+    }
   };
 
   return (
@@ -123,8 +133,8 @@ export default function Home() {
                 ZenQuotes API
               </FooterLink>
             </QuoteGeneratorSubtitle>
-            <QuoteGeneratorButton>
-              <QuoteGeneratorButtonText onClick={handleOpenGenerator}>
+            <QuoteGeneratorButton onClick={handleOpenGenerator}>
+              <QuoteGeneratorButtonText>
                 Generate a quote
               </QuoteGeneratorButtonText>
             </QuoteGeneratorButton>
