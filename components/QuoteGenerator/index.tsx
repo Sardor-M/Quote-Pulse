@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ModalCircularProgress,
   QuoteGeneratorInnerContainer,
@@ -36,6 +36,35 @@ const QuoteGeneratorModal = ({
 }: QuoteGeneratorProps) => {
   const wiseQuote = '"The best way to predict the future is to create it."';
   const wiseQuoteAuthor = "by Me :)";
+
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+
+  // function for handling the download of the quote
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    if (typeof blobUrl === "string") {
+      link.href = blobUrl;
+      link.download = "quote.png";
+      link.click();
+    }
+  };
+
+  // function for receiving the quote
+  useEffect(() => {
+    if (quoteReceived) {
+      const binaryData = Buffer.from(quoteReceived, "base64");
+      const blob = new Blob([binaryData], { type: "image/png" });
+      const blobUrlGenerated = URL.createObjectURL(blob);
+      console.log(blobUrlGenerated);
+      setBlobUrl(blobUrlGenerated);
+
+      // removing the old blob URL each time new one is generated
+      return () => {
+        URL.revokeObjectURL(blobUrlGenerated);
+      };
+    }
+  }, [quoteReceived]);
+
   return (
     <Modal
       id="QuoteGeneratorModal"
@@ -72,9 +101,9 @@ const QuoteGeneratorModal = ({
                   See a preview:
                 </QuoteGeneratorSubtitle>
                 <ImageBlobContainer>
-                  <ImageBlob />
+                  <ImageBlob quoteReceived={quoteReceived} blobUrl={blobUrl} />
                 </ImageBlobContainer>
-                <AnimatedDownloadButton />
+                <AnimatedDownloadButton handleDownload={handleDownload} />
               </>
             )}
           </QuoteGeneratorInnerContainer>
