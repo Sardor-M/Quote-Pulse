@@ -8,6 +8,8 @@ import {
   QuoteGeneratorTitle,
 } from "./QuoteGeneratorElem";
 import ImageBlob from "../Animations/ImageBlob";
+import AnimatedDownloadButton from "../Animations/AnimatedDownloadButton";
+import { ImageBlobContainer } from "../Animations/AnimationElement";
 
 interface QuoteGeneratorProps {
   open: boolean;
@@ -69,10 +71,10 @@ const QuoteGeneratorModal = ({
                 <QuoteGeneratorSubtitle style={{ marginTop: "20px" }}>
                   See a preview:
                 </QuoteGeneratorSubtitle>
-                <ImageBlobConatiner>
+                <ImageBlobContainer>
                   <ImageBlob />
-                </ImageBlobConatiner>
-                <AnimatedDownloadButton>Download</AnimatedDownloadButton>
+                </ImageBlobContainer>
+                <AnimatedDownloadButton />
               </>
             )}
           </QuoteGeneratorInnerContainer>
