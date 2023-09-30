@@ -52,6 +52,15 @@
   "function": {
     "quotePulseLambda": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "quotegen"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
