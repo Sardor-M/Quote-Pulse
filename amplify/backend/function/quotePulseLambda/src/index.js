@@ -11,7 +11,7 @@ Amplify Params - DO NOT EDIT */
 
 // AWS packages
 const AWS = require("aws-sdk");
-const docClient = new AWS.DynomoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 // Image processing packages
 const sharp = require("sharp");

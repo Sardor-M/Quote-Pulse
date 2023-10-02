@@ -18,7 +18,7 @@
       "function": {
         "quotePulseLambda": {
           "deploymentBucketName": "amplify-quotegen-dev-172723-deployment",
-          "s3Key": "amplify-builds/quotePulseLambda-526e4e436e7a77326650-build.zip"
+          "s3Key": "amplify-builds/quotePulseLambda-3646425973684871782b-build.zip"
         }
       },
       "api": {

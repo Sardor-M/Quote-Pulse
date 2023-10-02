@@ -8,7 +8,9 @@
     "@types/aws-lambda": "^8.10.92"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.421.0",
     "@types/node": "^20.7.2",
+    "aws-sdk": "^2.1467.0",
     "node-fetch": "^2.6.8",
     "path": "^0.12.7",
     "sharp": "^0.32.6"
