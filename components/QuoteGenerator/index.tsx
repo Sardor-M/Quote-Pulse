@@ -93,7 +93,7 @@ const QuoteGeneratorModal = ({
                 </QuoteGeneratorSubtitle>
               </>
             )}
-            {/* Quote state received */}
+            {/* State #2:  Quote state received */}
             {quoteReceived !== null && (
               <>
                 <QuoteGeneratorTitle>Download your quote</QuoteGeneratorTitle>
