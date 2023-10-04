@@ -23,7 +23,6 @@ import Cloud_2 from "assets/cloud-image-new.png";
 import { useEffect, useState } from "react";
 import { API } from "aws-amplify";
 import { generateAQuote, quoteQueryName } from "@/src/graphql/queries";
-import { QuoteQueryNameQuery } from "../src/API";
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import QuoteGeneratorModal from "@/components/QuoteGenerator";
 
