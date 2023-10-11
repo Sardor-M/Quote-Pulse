@@ -1,5 +1,5 @@
-import { Backdrop, Fade } from "@material-ui/core";
-import { Modal } from "@material-ui/core";
+import { Backdrop, Fade } from "@mui/material";
+import { Modal } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
   ModalCircularProgress,
