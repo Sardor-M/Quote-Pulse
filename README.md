@@ -1,11 +1,11 @@
 <img align="left" width="60" height="60" src="./assets/idea.png" alt="Image Segmentation Tool">
 
 # Quote-Pulse
-### 📝 Description
+### 📝 Description:
 
 - **Quote Pulse** is a full-stack web application that allows users to generate a random quote(s) from [Zen Quotes Api](https://zenquotes.io/) and save  generated quotes in **Image** format to your local machine.
 
-### 💻 Technologies Used
+### 💻 Technologies Used:
 
 - **Frontend:** 
   - `React.js`, `React-Bootstrap`, `Styled-Components`, `Typescript`
@@ -21,9 +21,8 @@
   - [Zen Quotes Api](https://zenquotes.io/random)
    
     
-project architecture
 
-### Project Architecture;
+### 🏗️ Project Architecture:
 ```mermaid
 graph LR
   subgraph "Client side"
@@ -54,6 +53,4 @@ subgraph "AWS Hosting"
   end
 
 ```
-
-
 
