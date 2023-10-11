@@ -26,7 +26,7 @@
 ```mermaid
 graph LR
   subgraph "Client side"
-    React[React.js]
+    React[React Components]
     Next[Next.js]
   end
 
