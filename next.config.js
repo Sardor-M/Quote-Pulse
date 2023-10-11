@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} **/
+
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
     // see https://styled-components.com/docs/tooling#babel-plugin for more
-    styledComponents: {
+    styledComponents:{
       // Enabled by default in development, disabled in production to reduce
       // file size.
       displayName: true,
